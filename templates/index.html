@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Product Mind Map</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsmind@0.8.6/style/jsmind.css">
+    <style>
+        #jsmind_container {
+            width: 100%;
+            height: 800px;
+            border: solid 1px #ccc;
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h2>Product Mind Map (Click to Expand...)</h2>
+    <div id="jsmind_container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jsmind@0.8.6/es6/jsmind.js"></script>
+    <script>
+        window.onload = function () {
+            fetch('/get_mind_map_data')
+                .then(response => response.json())
+                .then(mind => {
+                    const options = {
+                        container: 'jsmind_container',
+                        editable: false,
+                        theme: 'primary',
+                        expand: { level: 10 }
+                    };
+
+                    const jm = new jsMind(options);
+                    jm.show(mind);
+
+					// Collapse all children initially
+					const all_nodes = jm.mind.nodes;
+					for (const id in all_nodes) {
+						if (id !== 'root') {
+							jm.collapse_node(id);
+						}
+					}
+			
+                    document.getElementById("jsmind_container").addEventListener("click", () => {
+                        const node = jm.get_selected_node();
+                        if (node) {
+                            jm.toggle_node(node.id);
+                        }
+                    });
+                })
+                .catch(error => console.error('Failed to load mind map JSON:', error));
+        };
+    </script>
+</body>
+</html>

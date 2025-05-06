@@ -1,0 +1,79 @@
+[
+	{
+		"id": "P1001",
+		"name": "Laptop Pro 15",
+		"category": "Electronics",
+		"details": {
+			"brand": "TechMaster",
+			"specs": {
+				"processor": "Intel Core i7",
+				"ram": "16GB",
+				"storage": {
+					"type": "SSD",
+					"capacity": "512GB"
+				},
+				"display": {
+					"size": "15.6 inch",
+					"resolution": "1920x1080"
+				}
+			},
+			"warranty": {
+				"period": "2 years",
+				"type": "Onsite"
+			}
+		}
+	},
+	{
+		"id": "P2002",
+		"name": "Smartphone Max X",
+		"category": "Mobile Phones",
+		"details": {
+			"brand": "PhoneZone",
+			"specs": {
+				"os": "Android 13",
+				"camera": {
+					"rear": "108MP",
+					"front": "32MP"
+				},
+				"battery": {
+					"capacity": "5000mAh",
+					"type": "Li-ion"
+				},
+				"network": {
+					"5G": true,
+					"eSIM": true
+				}
+			},
+			"warranty": {
+				"period": "1 year",
+				"type": "Carry-in"
+			}
+		}
+	},
+	{
+		"id": "P3003",
+		"name": "SmartCool Fridge 300L",
+		"category": "Home Appliances",
+		"details": {
+			"brand": "CoolTech",
+			"specs": {
+				"capacity": "300L",
+				"energy_rating": "4 Star",
+				"features": {
+					"convertible": true,
+					"inverter": true,
+					"smart_control": false
+				},
+				"dimensions": {
+					"height": "170cm",
+					"width": "60cm",
+					"depth": "68cm"
+				}
+			},
+			"warranty": {
+				"period": "10 years",
+				"type": "Compressor only"
+			}
+		}
+	}
+]

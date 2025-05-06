@@ -1,0 +1,61 @@
+ <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mind Map</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsmind@0.8.6/style/jsmind.css" />
+  <style>
+    #jsmind_container {
+      width: 100%;
+      height: 600px;
+      border: 1px solid #ccc;
+      background: #f4f4f4;
+    }
+  </style>
+  
+</head>
+<body>
+  <h2>Generated Mind Map</h2>
+  <div id="jsmind_container"></div>
+	
+  <script src="https://cdn.jsdelivr.net/npm/jsmind@0.8.6/es6/jsmind.js"></script>
+  <script>
+    const mind = {{ mind_data | safe }};
+
+    const options = {
+      container: 'jsmind_container',
+      editable: false,
+      theme: 'primary',
+      expand: { level: 1 }
+    };
+
+    const jm = new jsMind(options);
+    jm.show(mind);
+
+	// Collapse all children initially
+	const all_nodes = jm.mind.nodes;
+	for (const id in all_nodes) {
+		if (id !== 'root') {
+			jm.collapse_node(id);
+		}
+	}
+	
+	// Add native tooltips to each node based on topic
+	  Object.values(jm.mind.nodes).forEach(node => {
+		const el = document.getElementById(node.id);
+		if (el) {
+		  // You can customize this with extra data if needed
+		  el.title = node.detail;
+		}
+	  });
+	  
+    // Click to expand/collapse nodes
+    document.getElementById('jsmind_container').addEventListener('click', () => {
+      const node = jm.get_selected_node();
+      if (node) {
+        jm.toggle_node(node.id);
+      }
+    });
+  </script>
+</body>
+</html>
