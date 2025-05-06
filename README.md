@@ -6,7 +6,7 @@ This is generic code to generate mind map for any Json Data
 
 - Clone the code as per below
 ```
-git clone 
+git clone https://github.com/kkpant75/flask-mind-map
 ```
 - Execute Application 
 
