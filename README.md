@@ -2,6 +2,9 @@
 
 This is generic code to generate mind map for any Json Data 
 
+# Image Sample 
+![Sample](example.png)
+
 # How To Execute 
 
 - Clone the code as per below
